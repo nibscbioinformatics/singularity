@@ -22,5 +22,6 @@ libncurses5-dev \
 libncursesw5-dev \
 liblzma-dev
 
+
 # Dump the details of the installed packages to a file for posterity
 RUN conda env export --name singularityenv > singularityenv.yml
