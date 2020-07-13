@@ -1,0 +1,21 @@
+name: Docker Build & Push - Reporting
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v1.1.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: nibscbioinformatics/singularityenv
+          tags: dev-git
+          path: .
+          always_pull: false
+          push: true
